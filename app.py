@@ -42,7 +42,6 @@ disease_info = {
     "백점병": {
         "설명": "백점충에 의해 발생하는 대표적인 기생충 질환입니다.",
         "치료": "수온을 천천히 올리고 백점병 치료제를 사용합니다.",
-        "사진": "image/백점병.jpg"
     },
 
     "부레병": {
@@ -102,7 +101,6 @@ def result():
         disease=top_disease,
         description=disease_info[top_disease]["설명"],
         treatment=disease_info[top_disease]["치료"],
-        image=disease_info[top_disease]["사진"]
     )
 
 # 코드를 수정하고 저장하면 웹 서버가 자동으로 재시작
