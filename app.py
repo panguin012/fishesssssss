@@ -99,5 +99,5 @@ def result():
         treatment=disease_info[top_disease]["치료"]
     )
 
-# 코드를 수정하고 저장하면 웹 서버가 자동으로 재시작
-app.run(port=3030, debug=True) 
+if __name__ == "__main__":
+    app.run(debug=True)
