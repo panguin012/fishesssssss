@@ -1,5 +1,5 @@
 #Flask 클래스와 함수 둘을 가져옴
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 #Flask 어플리케이션 객체를 app에 저장
 app = Flask(__name__)  #현재 실행 중인 파일의 이름
@@ -41,7 +41,8 @@ disease_info = {
 
     "백점병": {
         "설명": "백점충에 의해 발생하는 대표적인 기생충 질환입니다.",
-        "치료": "수온을 천천히 올리고 백점병 치료제를 사용합니다."
+        "치료": "수온을 천천히 올리고 백점병 치료제를 사용합니다.",
+        "사진": "백점병.jpg"
     },
 
     "부레병": {
@@ -66,9 +67,13 @@ def home(): # 이 home() 함수를 실행
     return render_template("index.html") # index.html 화면을 보여줘
 
 #사용자가 주소('/result')로 접속?
-@app.route('/result', methods=['POST'])
+@app.route('/result', methods=['GET', 'POST'])
 def result():
-    selected = request.form.getlist("symptoms") #"symptoms"인 값을 모아 리스트로 저장
+
+    if request.method == 'GET':
+        return redirect('/')
+
+    selected = request.form.getlist("symptoms")
     scores = {}
 
     #disease 딕셔너리에서 질병 이름, 증상을 하나씩 꺼내서 반복
@@ -99,5 +104,6 @@ def result():
         treatment=disease_info[top_disease]["치료"]
     )
 
+# 코드를 수정하고 저장하면 웹 서버가 자동으로 재시작
 if __name__ == "__main__":
     app.run(debug=True)
