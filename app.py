@@ -195,15 +195,16 @@ def result():
         reverse=True #높은 순서부터 낮은 순서로 정렬
     )
 
+    top5 = ranking[:5]
     top_disease = ranking[0][0]
 
     #result.html에 ranking, top_disease, 설명, 치료 정보를 전달
     return render_template(
         'result.html',
-        ranking=ranking,
-        disease=top_disease,
-        description=disease_info[top_disease]["설명"],
-        treatment=disease_info[top_disease]["치료"],
+        ranking=top5,
+        disease=top5[0][0],
+        description=disease_info[top5[0][0]]["설명"],
+        treatment=disease_info[top5[0][0]]["치료"],
     )
 # 코드를 수정하고 저장하면 웹 서버가 자동으로 재시작
 if __name__ == "__main__":
