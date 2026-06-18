@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>진단 결과</title>
+</head>
+<body>
+
+    <h1>진단 결과</h1>
+
+    <h2 style="font-size:20px;">질병 순위</h2>
+
+    <ol>
+    {% for disease, score in ranking %}
+        <li>{{ disease }} </li>
+    {% endfor %}
+    </ol>
+
+    <h2 style="font-size:20px;">1위 질병 : {{ disease }}</h2>
+
+    <p>{{ description }}</p>
+
+    <p>{{ treatment }}</p>
+
+    <a href="/" style="font-size:16px;">다시 진단</a>
+
+</body>
+</html>
